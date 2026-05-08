@@ -30,6 +30,31 @@ corepack enable
 corepack pnpm --version   # 应输出 10.33.2
 ```
 
+## 克隆上游并推送到自己的仓库（可选）
+
+如果你希望基于 `nexu-io/open-design` 做自己的副本（例如推送到 `git@github.com:LynneLan3/open_design.git`），可以按下面步骤：
+
+```bash
+# 1) 克隆上游仓库
+git clone https://github.com/nexu-io/open-design.git
+cd open-design
+
+# 2) 将你的仓库设为 origin（推送目标）
+git remote rename origin upstream
+git remote add origin git@github.com:LynneLan3/open_design.git
+
+# 3) 首次推送当前分支（通常是 main）
+git push -u origin HEAD
+```
+
+后续同步上游更新：
+
+```bash
+git fetch upstream
+git merge upstream/main
+git push
+```
+
 ## 一条命令（dev 模式）
 
 ```bash
